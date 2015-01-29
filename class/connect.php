@@ -19,7 +19,7 @@ class Connect{
     }
 
   public function check_login($email,$pass){
-	  $conObj = new Connect();//new connection object
+	 
 	  $handler = $this->connect_db();
 	  $sql = "SELECT * FROM members WHERE email = '$email' AND password = '$pass' LIMIT 1";
 	  $query = $handler->prepare($sql);
@@ -37,7 +37,7 @@ class Connect{
 
     public function getUserFields($field,$id)
     {
-	  $conObj = new Connect();
+	 
       $handler = $this->connect_db();
       $sql = "SELECT $field FROM members WHERE id='$id' LIMIT 1";
       $query = $handler->prepare($sql);
@@ -49,7 +49,7 @@ class Connect{
     
     public function insertIntoChat($chat,$username)
     {
-      $conObj = new Connect();
+
       $handler = $this->connect_db();
       $sql = "INSERT INTO chatbox(chatBody,username) VALUES(?,?)";
       $query = $handler->prepare($sql);
@@ -63,7 +63,7 @@ class Connect{
 
     public function getChatbox()
     {
-      $conObj = new Connect();
+     
       $handler = $this->connect_db();
       $sql = "SELECT * FROM (SELECT * FROM chatbox order by id DESC LIMIT 20) TMP ORDER BY TMP.id ASC";
       $query = $handler->prepare($sql);
